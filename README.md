@@ -33,19 +33,21 @@ The project also includes a Streamlit dashboard for visualizing the processed da
 
 ## ETL Workflow
 
+```text
 CSV Data
-↓
+   ↓
 Extract
-↓
+   ↓
 Transform
-↓
+   ↓
 Load into SQLite
-↓
+   ↓
 Generate Reports
-↓
+   ↓
 Google Drive Cloud Storage
-↓
+   ↓
 Email Delivery
+```
 
 ## Cloud Computing Component
 
@@ -69,6 +71,7 @@ This provides cloud-based storage and remote accessibility for the generated rep
 
 ## Project Structure
 
+```text
 etl-dashboard/
 │
 ├── data/
@@ -76,6 +79,7 @@ etl-dashboard/
 │   └── etl.db
 │
 ├── etl/
+│   ├── __init__.py
 │   ├── extractor.py
 │   ├── transformer.py
 │   ├── loader.py
@@ -87,9 +91,11 @@ etl-dashboard/
 ├── run_etl.py
 ├── test_extract.py
 ├── check_db.py
+├── test_drive.py
 ├── requirements.txt
 ├── .gitignore
 └── README.md
+```
 
 ## How to Run
 
@@ -99,7 +105,9 @@ etl-dashboard/
 
 3. Install the required dependencies:
 
-   pip install -r requirements.txt
+```bash
+pip install -r requirements.txt
+```
 
 4. Configure the required environment variables in `.env`.
 
@@ -107,7 +115,9 @@ etl-dashboard/
 
 6. Run the ETL pipeline:
 
-   python run_etl.py
+```bash
+python run_etl.py
+```
 
 ## Output
 
