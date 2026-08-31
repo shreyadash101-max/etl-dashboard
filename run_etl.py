@@ -7,6 +7,7 @@ from etl.transformer import transform
 from etl.loader import load
 from etl.viz import create_report
 from etl.emailer import send_email
+from etl.drive_uploader import upload_reports
 
 print("DEBUG: extract function from ->", extract.__module__)
 
@@ -16,6 +17,7 @@ load_dotenv()
 # Setup logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
+
 
 def main():
     try:
@@ -34,7 +36,7 @@ def main():
 
         print(df_clean.columns)
 
-        print("DEBUG: columns =", df_clean.columns) 
+        print("DEBUG: columns =", df_clean.columns)
 
         logger.info("Loading data")
         load(df_clean)
@@ -42,7 +44,10 @@ def main():
         logger.info("Generating reports")
         create_report(df_clean)
 
-        #  Email step 
+        logger.info("Uploading reports to Google Drive")
+        upload_reports()
+
+        # Email step
         if os.getenv("SEND_EMAIL") == "true":
             logger.info("Sending email...")
             send_email()
@@ -51,6 +56,7 @@ def main():
 
     except Exception as e:
         logger.error(f"Pipeline failed: {e}")
+
 
 # CRITICAL
 if __name__ == "__main__":

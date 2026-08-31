@@ -3,3 +3,6 @@ venv/
 __pycache__/
 *.pyc
 reports/
+credentials.json
+token.json
+data/etl.db
